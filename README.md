@@ -69,6 +69,8 @@ THIS WILL MAKE DEEPGRAM_DATA.CSV OR IF EXISTED THEN REWRITE IT
     
     ```
 
+THIS WILL CHANGE CSV DATA TO JSON IN THIS FORMART email,LIVE_KIT_URL,LIVEKIT_API_KEYS,LIVEKIT_SECRET_KEYS AND SEND TO * UPSTASH *
+
 # =========================================================================================================================================== #
 
 
