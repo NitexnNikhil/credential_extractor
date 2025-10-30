@@ -1,2 +1,10 @@
 .env
 .venv
+# Ignore virtual environments
+venv/
+.env
+__pycache__/
+*.pyc
+.DS_Store
+.idea/
+.vscode/
