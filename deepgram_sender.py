@@ -6,6 +6,7 @@ import csv
 import requests
 import os
 from dotenv import load_dotenv
+import deepgram_extractor
 
 # Load environment variables
 load_dotenv()
@@ -39,6 +40,7 @@ with open(CSV_FILE, mode='r', encoding='utf-8') as file:
             "provider": "deepgram",
             "metadata": {
                 "email": row["email"],
+                "PROJECT_ID": row["PROJECT_ID"],
                 "DEEPGRAM_API_KEY": row["DEEPGRAM_API_KEY"]
             }
         }
