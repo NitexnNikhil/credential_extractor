@@ -99,7 +99,7 @@ class DataExtractor:
 
 def main():
     input_file = 'deepgram_keys.txt'
-    output_file = 'deepgram_keys.csv'
+    output_file = 'deepgram_data.csv'
 
     if not Path(input_file).exists():
         print(f"❌ File '{input_file}' not found in directory: {Path.cwd()}")
