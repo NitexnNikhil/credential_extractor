@@ -1,0 +1,12 @@
+01
+godepij853@dropeso.com
+DEEPGRAM_API_KEY=15cf70d29a127fc53281a223ff1657f90b241dcb
+
+
+02
+falsiexmai@gmail.com
+DEEPGRAM_API_KEY=14cf70d29a127fc53281a223ff1657f90b241dcb
+
+
+
+

@@ -12,12 +12,12 @@ load_dotenv()
 
 UPSTASH_URL = os.getenv("UPSTASH_REDIS_REST_URL")
 UPSTASH_TOKEN = os.getenv("UPSTASH_REDIS_REST_TOKEN")
-KEY = "livekit_credentials_test"
+KEY = "deepgram_credentials_test"
 
 # Using /set to store all credentials as one full JSON array
 API_URL = f"{UPSTASH_URL}/set/{KEY}"
 
-CSV_FILE = "extracted_data.csv"
+CSV_FILE = "deepgram_data.csv"
 
 HEADERS = {
     "Authorization": f"Bearer {UPSTASH_TOKEN}",
@@ -36,12 +36,10 @@ with open(CSV_FILE, mode='r', encoding='utf-8') as file:
     reader = csv.DictReader(file)
     for row in reader:
         payload = {
-            "provider": "livekit",
+            "provider": "deepgram",
             "metadata": {
                 "email": row["email"],
-                "LIVEKIT_URL": row["LIVE_KIT_URL"],
-                "LIVEKIT_API_KEY": row["LIVEKIT_API_KEYS"],
-                "LIVEKIT_API_SECRET": row["LIVEKIT_SECRET_KEYS"]
+                "DEEPGRAM_API_KEY": row["DEEPGRAM_API_KEY"]
             }
         }
         all_payloads.append(payload)

@@ -3,7 +3,7 @@ import csv
 from pathlib import Path
 
 class DataExtractor:
-    def __init__(self, input_file, output_file='extracted_data.csv'):
+    def __init__(self, input_file, output_file):
         self.input_file = input_file
         self.output_file = output_file
         
@@ -237,8 +237,8 @@ class DataExtractor:
 
 def main():
     # You can change these paths
-    input_file = 'keys.txt'
-    output_file = 'extracted_data.csv'
+    input_file = 'livekit_keys.txt'
+    output_file = 'livekit_data.csv'
     
     # Check if file exists in current directory
     if not Path(input_file).exists():
