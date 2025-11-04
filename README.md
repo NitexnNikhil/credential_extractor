@@ -1,82 +1,136 @@
-# credential_extractor
+# Credential Extractor
 
-# =============================================================================================================== #
-<!-- 
-HERE WE BASICALLY HAVE 3 FILES FOR BOTH LIVEKIT AND DEEPGRAM
 
-LIVEKIT_SENDER, DEEPGRAM_SENDER  - FOR SENDING DATA TO UPSTASH VIA (POST) API
+# ==================================================================================================================================================== #
+## 📘 Overview
+The **Credential Extractor** project automates the process of **extracting and uploading credentials** for both **LiveKit** and **Deepgram** services.  
+It converts raw credential data into structured CSV and JSON formats, and then sends them securely to **Upstash** via API requests.
 
-LIVEKIT_EXTRACTOR.PY, DEEPGRAM_EXTRACTOR.PY - FOR  EXTRACT THE CREDENTIALS 
-    FOR LIVEKIT : CREDENTIALS EXTRACTED IS EMAIL, LIVEKIT_URL, LIVEKIT_API_KEY, LIVEKIT_API_SECRET
+# ==================================================================================================================================================== #
 
-    FOR DEEPGRAM : CREDENTIALS EXTRACTED IS EMAIL, DEEPGRAM_API_KEY
+---
 
-LIVEKIT_KEYS, DEEPGRAM_KEYS : CONTAINING ALL THE REQUIRED CREDENTIALS THAT SAVED IN .csv FILE
+## 📂 Project Structure
 
--->
+| File | Description |
+|------|--------------|
+| `livekit_extractor.py` | Extracts credentials from `LIVEKIT_KEYS.txt` and saves them to `LIVEKIT_DATA.csv`. |
+| `livekit_sender.py` | Sends LiveKit credentials to Upstash in JSON format. |
+| `deepgram_extractor.py` | Extracts credentials from `DEEPGRAM_KEYS.txt` and saves them to `DEEPGRAM_DATA.csv`. |
+| `deepgram_sender.py` | Sends Deepgram credentials to Upstash in JSON format. |
+| `LIVEKIT_KEYS.txt` | Contains raw LiveKit credentials (Email, URL, API Key, Secret). |
+| `DEEPGRAM_KEYS.txt` | Contains raw Deepgram credentials (Email, API Key). |
+| `extracted_data.csv` | Stores published and verified credentials. |
 
-NOTE - LIVEKIT_KEYS.TXT, DEEPGRAM_KEYS.TXT FILE CONTAINING ALL THE REQUIRED CREDENTIALS 
+# Note -> | `extracted2_data copy.csv` | Contains credentials ready to be sent to Upstash. |
 
-# FOR LIVEKIT CREDENTIALS SEND TO UPSTASH WITH API OR UPSTASH_KEYS
 
-1. RUN THE livekit_extractor.py using below command
+# ==================================================================================================================================================== #
 
-# TO  EXTRACT THE CREDENTIALS FROM THE LIVEKIT_KEYS.TXT
+---
 
+## ⚙️ How It Works
+
+### 🔹 LiveKit Credentials Extraction
+
+1. Run the extractor to parse credentials from `LIVEKIT_KEYS.txt`:
+    ```bash
+    python livekit_extractor.py
     ```
-        bash
+    - Output: `LIVEKIT_DATA.csv` (rewritten if it already exists)
+    - Note: The extracted data is structured and ready for sending.
 
-        python livekit_extractor.py
-
+2. Send the extracted credentials to Upstash:
+    ```bash
+    python livekit_sender.py
     ```
+    - Converts CSV → JSON (format: `email, LIVEKIT_URL, LIVEKIT_API_KEY, LIVEKIT_API_SECRET`)
+    - Sends securely via Upstash API endpoint.
 
-THIS WILL MAKE LIVEKIT_DATA.CSV OR IF EXISTED THEN REWRITE IT 
 
-2. RUN THE livekit_sender.py using below command 
+# ==================================================================================================================================================== #
 
+---
+
+### 🔹 Deepgram Credentials Extraction
+
+1. Run the extractor to parse credentials from `DEEPGRAM_KEYS.txt`:
+    ```bash
+    python deepgram_extractor.py
     ```
-        bash
+    - Output: `DEEPGRAM_DATA.csv` (rewritten if it already exists)
 
-        python livekit_sender.py
-    
+2. Send the extracted credentials to Upstash:
+    ```bash
+    python deepgram_sender.py
     ```
+    - Converts CSV → JSON (format: `email, DEEPGRAM_API_KEY`)
+    - Sends securely via Upstash API endpoint.
 
-THIS WILL CHANGE CSV DATA TO JSON IN THIS FORMART email,LIVE_KIT_URL,LIVEKIT_API_KEYS,LIVEKIT_SECRET_KEYS AND SEND TO * UPSTASH *
+---
 
-# FOR DEEPGRAM CREDENTIALS SEND TO UPSTASH WITH API OR UPSTASH_KEYS
+# ==================================================================================================================================================== #
 
+## 🧠 Notes
 
+- Ensure `LIVEKIT_KEYS.txt` and `DEEPGRAM_KEYS.txt` exist before running extractors.
+- The extractor overwrites existing CSV files if present.
+- The sender scripts automatically skip duplicates during upload.
+- `.env` file should include API endpoint and authentication tokens for secure data transfer.
 
-1. RUN THE deepgram_extractor.py using below command
+---
 
-# TO EXTRACT THE CREDENTIALS FROM THE DEEPGRAM_KEYS.TXT
+# ==================================================================================================================================================== #
 
-    ```
-        bash
+## ✅ Example Output Format
 
-        python deepgram_extractor.py
+### LiveKit JSON Example:
+```json
+[
+  {
+    "email": "user@example.com",
+    "LIVEKIT_URL": "wss://example.livekit.cloud",
+    "LIVEKIT_API_KEY": "abcd1234",
+    "LIVEKIT_API_SECRET": "efgh5678"
+  }
+]
+```
 
-    ```
+### Deepgram JSON Example:
+```json
+[
+  {
+    "email": "user@example.com",
+    "DEEPGRAM_API_KEY": "xyz9876"
+  }
+]
+```
 
-THIS WILL MAKE DEEPGRAM_DATA.CSV OR IF EXISTED THEN REWRITE IT 
+---
 
-2. RUN THE deepgram_sender.py using below command 
+## 🧩 Dependencies
 
-    ```
-        bash
+Make sure you have the following installed:
 
-        python deepgram_sender.py
-    
-    ```
+```bash
+pip install requests python-dotenv pandas
+```
 
-THIS WILL CHANGE CSV DATA TO JSON IN THIS FORMART email,LIVE_KIT_URL,LIVEKIT_API_KEYS,LIVEKIT_SECRET_KEYS AND SEND TO * UPSTASH *
+---
 
-# =========================================================================================================================================== #
+## 🏁 Execution Order Summary
 
+1️⃣ **LiveKit**  
+   - `python livekit_extractor.py`  
+   - `python livekit_sender.py`  
 
+2️⃣ **Deepgram**  
+   - `python deepgram_extractor.py`  
+   - `python deepgram_sender.py`  
 
+---
 
+## 📜 License
+This project is licensed for internal use only. Redistribution or commercial use requires prior authorization.
 
-
-
-
+# ==================================================================================================================================================== #
