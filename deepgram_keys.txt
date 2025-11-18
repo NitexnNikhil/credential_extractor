@@ -1,0 +1,15 @@
+01
+godepij853@dropeso.com
+PROJECT_ID=a87cae23-9b47-49b6-bae8-b37b0646b4xx
+DEEPGRAM_API_KEY=15cf70d29a127fc53281a223ff1657f90b241dcb
+
+
+
+02 
+pathrabenikhil23@gmail.com
+PROJECT_ID=a87cae23-9b47-49b6-bae8-b37b0646b8e9
+DEEPGRAM_API_KEY=099f3a9400ed56129d48117a019b62c7e845df10
+
+
+
+
