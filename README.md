@@ -15,9 +15,9 @@ It converts raw credential data into structured CSV and JSON formats, and then s
 | File | Description |
 |------|--------------|
 | `livekit_extractor.py` | Extracts credentials from `LIVEKIT_KEYS.txt` and saves them to `LIVEKIT_DATA.csv`. |
-| `livekit_sender.py` | Sends LiveKit credentials to Upstash in JSON format. |
+| `livekit_sender.py` | Sends or removes LiveKit credentials in Upstash using `keyId` lookup from LiveKit JSON files. |
 | `deepgram_extractor.py` | Extracts credentials from `DEEPGRAM_KEYS.txt` and saves them to `DEEPGRAM_DATA.csv`. |
-| `deepgram_sender.py` | Sends Deepgram credentials to Upstash in JSON format. |
+| `deepgram_sender.py` | Sends or removes Deepgram credentials in Upstash using `keyId` lookup from a Deepgram JSON file. |
 | `LIVEKIT_KEYS.txt` | Contains raw LiveKit credentials (Email, URL, API Key, Secret). |
 | `DEEPGRAM_KEYS.txt` | Contains raw Deepgram credentials (Email, API Key). |
 | `extracted_data.csv` | Stores published and verified credentials. |
@@ -47,6 +47,15 @@ It converts raw credential data into structured CSV and JSON formats, and then s
     - Converts CSV → JSON (format: `email, LIVEKIT_URL, LIVEKIT_API_KEY, LIVEKIT_API_SECRET`)
     - Sends securely via Upstash API endpoint.
 
+3. Remove LiveKit credentials from Upstash:
+    ```bash
+    python3 livekit_sender.py --remove --provider livekit-hotfix
+    ```
+    - Reads the CSV, matches each row against `src/livekit-hotfix.json` or `src/livekit.json`
+    - Extracts the matching `keyId`
+    - Sends `{ "provider": "...", "keyId": "..." }` to `https://fleet.aceint.ai/key/delete`
+    - Use `--provider livekit` to match against `src/livekit.json`
+
 
 # ==================================================================================================================================================== #
 
@@ -66,6 +75,20 @@ It converts raw credential data into structured CSV and JSON formats, and then s
     ```
     - Converts CSV → JSON (format: `email, DEEPGRAM_API_KEY`)
     - Sends securely via Upstash API endpoint.
+    - Optional: choose the payload provider with `--provider`
+      ```bash
+      python deepgram_sender.py --provider deepgram-hotfix
+      python deepgram_sender.py --provider deepgram
+      ```
+
+3. Remove Deepgram credentials from Upstash:
+    ```bash
+    python3 deepgram_sender.py --remove --provider deepgram-hotfix --keys-json /path/to/deepgram.json
+    ```
+    - Reads the CSV, matches each row against the Deepgram JSON file
+    - Extracts the matching `keyId`
+    - Sends `{ "provider": "...", "keyId": "..." }` to `https://fleet.aceint.ai/key/delete`
+    - Use `--provider deepgram` if your JSON file uses the plain `deepgram` provider
 
 ---
 
@@ -76,6 +99,7 @@ It converts raw credential data into structured CSV and JSON formats, and then s
 - Ensure `LIVEKIT_KEYS.txt` and `DEEPGRAM_KEYS.txt` exist before running extractors.
 - The extractor overwrites existing CSV files if present.
 - The sender scripts automatically skip duplicates during upload.
+- Remove mode uses `keyId` matching from the corresponding JSON file before calling the delete endpoint.
 - `.env` file should include API endpoint and authentication tokens for secure data transfer.
 
 ---
@@ -96,6 +120,10 @@ It converts raw credential data into structured CSV and JSON formats, and then s
 ]
 ```
 
+LiveKit JSON files used for delete lookup:
+- `src/livekit.json`
+- `src/livekit-hotfix.json`
+
 ### Deepgram JSON Example:
 ```json
 [
@@ -105,6 +133,8 @@ It converts raw credential data into structured CSV and JSON formats, and then s
   }
 ]
 ```
+
+For Deepgram delete lookup, pass the JSON file path with `--keys-json`.
 
 ---
 
@@ -121,12 +151,14 @@ pip install requests python-dotenv pandas
 ## 🏁 Execution Order Summary
 
 1️⃣ **LiveKit**  
-   - `python livekit_extractor.py`  
-   - `python livekit_sender.py`  
+  - `python livekit_extractor.py`  
+  - `python livekit_sender.py`  
+  - `python3 livekit_sender.py --remove --provider livekit-hotfix`
 
 2️⃣ **Deepgram**  
-   - `python deepgram_extractor.py`  
-   - `python deepgram_sender.py`  
+  - `python deepgram_extractor.py`  
+  - `python deepgram_sender.py`  
+  - `python3 deepgram_sender.py --remove --provider deepgram-hotfix --keys-json /path/to/deepgram.json`
 
 ---
 

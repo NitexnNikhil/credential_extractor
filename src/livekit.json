@@ -1,0 +1,209 @@
+{
+    "status": 201,
+    "response": {
+        "count": 10,
+        "key_1786126617058": {
+            "id": "key_1786126617058",
+            "provider": "livekit",
+            "status": "in_use",
+            "concurrency": 1,
+            "maxConcurrency": 5,
+            "monthlyUsageCount": 4,
+            "monthlyUsageLimit": 1000,
+            "monthlyUsageDuration": 2,
+            "monthlyDurationLimit": 5000,
+            "email": "fivak50155@kingcq.com",
+            "LIVEKIT_URL": "wss://fivak50155-kingcq-com-x0a4ioo2.livekit.cloud",
+            "LIVEKIT_API_KEY": "APIjPgVg2PHDNov",
+            "LIVEKIT_API_SECRET": "ZeiZq9tO0fZox0OAJuOiA22mTL4oqhBImkqm64sqq1h",
+            "activeSessions": {
+                "5e9b7ba4-6d60-404a-93b4-e1459ce9efac": "2026-08-29T08:34:17.050Z"
+            },
+            "lastUsed": "2026-08-29T08:34:17.050Z",
+            "resetCount": 2
+        },
+        "key_1786126632744": {
+            "id": "key_1786126632744",
+            "provider": "livekit",
+            "status": "in_use",
+            "concurrency": 2,
+            "maxConcurrency": 5,
+            "monthlyUsageCount": 6,
+            "monthlyUsageLimit": 1000,
+            "monthlyUsageDuration": 16,
+            "monthlyDurationLimit": 5000,
+            "email": "vajaso1110@kingcq.com",
+            "LIVEKIT_URL": "wss://sfsf-qi29zcph.livekit.cloud",
+            "LIVEKIT_API_KEY": "APIzkygvHrbMgX7",
+            "LIVEKIT_API_SECRET": "hRP5L8GAvG4uwM3bYe7bgwaE3mLyIYpZ6bpuxQsM0QZ",
+            "activeSessions": {
+                "ea3ca342-0313-4f77-b412-066811a4d261": "2026-08-29T08:12:44.430Z",
+                "db705738-9596-483d-98bf-595c8d23eb2b": "2026-08-29T08:41:51.999Z"
+            },
+            "lastUsed": "2026-08-29T09:55:51.731Z",
+            "resetCount": 2
+        },
+        "key_1786126536742": {
+            "id": "key_1786126536742",
+            "provider": "livekit",
+            "status": "in_use",
+            "concurrency": 1,
+            "maxConcurrency": 5,
+            "monthlyUsageCount": 8,
+            "monthlyUsageLimit": 1000,
+            "monthlyUsageDuration": 50,
+            "monthlyDurationLimit": 5000,
+            "email": "fawenav759@kingcq.com",
+            "LIVEKIT_URL": "wss://sf-lq6nk441.livekit.cloud",
+            "LIVEKIT_API_KEY": "APIuUXqjTqNrQbd",
+            "LIVEKIT_API_SECRET": "T0bK8bgacNcRftV45PEIUqWrotg1B2JokihD98Gq4f2",
+            "activeSessions": {
+                "f68a8ae4-530c-4199-8cbf-195a7363b475": "2026-08-29T08:33:20.272Z"
+            },
+            "lastUsed": "2026-09-01T08:53:59.214Z",
+            "resetCount": 2
+        },
+        "key_1786126552485": {
+            "id": "key_1786126552485",
+            "provider": "livekit",
+            "status": "in_use",
+            "concurrency": 1,
+            "maxConcurrency": 5,
+            "monthlyUsageCount": 7,
+            "monthlyUsageLimit": 1000,
+            "monthlyUsageDuration": 17,
+            "monthlyDurationLimit": 5000,
+            "email": "vimisi5736@kierko.com",
+            "LIVEKIT_URL": "wss://vimisi5736-kierko-com-yf4go3o0.livekit.cloud",
+            "LIVEKIT_API_KEY": "APIHaZYDJ9KKo9D",
+            "LIVEKIT_API_SECRET": "zZPAy8g6yI5e75WZaUGzzknQTT5CrpeNOr7Xm0bWgkI",
+            "activeSessions": {
+                "b86add6c-8131-4eb6-823b-fee3f58283ed": "2026-08-29T08:11:33.432Z"
+            },
+            "lastUsed": "2026-09-01T09:03:14.807Z",
+            "resetCount": 2
+        },
+        "key_1786126568421": {
+            "id": "key_1786126568421",
+            "provider": "livekit",
+            "status": "active",
+            "concurrency": 0,
+            "maxConcurrency": 5,
+            "monthlyUsageCount": 11,
+            "monthlyUsageLimit": 1000,
+            "monthlyUsageDuration": 96,
+            "monthlyDurationLimit": 5000,
+            "email": "wiwob15578@kierko.com",
+            "LIVEKIT_URL": "wss://wiwob15578-kierko-com-yc91628c.livekit.cloud",
+            "LIVEKIT_API_KEY": "APIWoJmf4nQzHrz",
+            "LIVEKIT_API_SECRET": "Q8UelNoAusMgnV0Zto61eqJPHlsXew27fweOw0JI135F",
+            "activeSessions": {},
+            "lastUsed": "2026-09-02T09:47:34.776Z",
+            "resetCount": 2
+        },
+        "key_1786126648445": {
+            "id": "key_1786126648445",
+            "provider": "livekit",
+            "status": "in_use",
+            "concurrency": 2,
+            "maxConcurrency": 5,
+            "monthlyUsageCount": 4,
+            "monthlyUsageLimit": 1000,
+            "monthlyUsageDuration": 15,
+            "monthlyDurationLimit": 5000,
+            "email": "temogek990@kierko.com",
+            "LIVEKIT_URL": "wss://temogek990-kierko-com-h4enct09.livekit.cloud",
+            "LIVEKIT_API_KEY": "APIRMVVppvUteSA",
+            "LIVEKIT_API_SECRET": "yo7UqsMyVfyyhbJKXAxlP2VKJMrpR5GebQ9TKufIXUJB",
+            "activeSessions": {
+                "07b47d96-870d-4095-9f0c-a1aa1a93f036": "2026-08-29T07:40:40.219Z",
+                "d5393fc0-d2d4-4991-b18c-b75ddaebe739": "2026-08-29T08:21:00.836Z"
+            },
+            "lastUsed": "2026-08-29T09:18:36.090Z",
+            "resetCount": 3
+        },
+        "key_1786126664143": {
+            "id": "key_1786126664143",
+            "provider": "livekit",
+            "status": "in_use",
+            "concurrency": 2,
+            "maxConcurrency": 5,
+            "monthlyUsageCount": 4,
+            "monthlyUsageLimit": 1000,
+            "monthlyUsageDuration": 0,
+            "monthlyDurationLimit": 5000,
+            "email": "pabel51166@kingcq.com",
+            "LIVEKIT_URL": "wss://pabel51166-kingcq-com-a3gdp38k.livekit.cloud",
+            "LIVEKIT_API_KEY": "APIfpoeRWwzaMr4",
+            "LIVEKIT_API_SECRET": "ec7GyeUPzctOpEkNVQIe9wvZYnwAuV90BDEe8SX8vprC",
+            "activeSessions": {
+                "cd2328b9-4a43-404c-83a7-a4e600e9d496": "2026-08-29T08:11:21.698Z",
+                "4c9b8022-aa7e-4ca2-b3f8-53ea19c53133": "2026-08-29T08:15:19.982Z"
+            },
+            "lastUsed": "2026-08-29T08:15:19.981Z",
+            "resetCount": 2
+        },
+        "key_1786126679842": {
+            "id": "key_1786126679842",
+            "provider": "livekit",
+            "status": "in_use",
+            "concurrency": 1,
+            "maxConcurrency": 5,
+            "monthlyUsageCount": 5,
+            "monthlyUsageLimit": 1000,
+            "monthlyUsageDuration": 17,
+            "monthlyDurationLimit": 5000,
+            "email": "gigime4659@kingcq.com",
+            "LIVEKIT_URL": "wss://gigime4659-kingcq-com-0ebs2ld0.livekit.cloud",
+            "LIVEKIT_API_KEY": "APIkKK4fTgYSqFR",
+            "LIVEKIT_API_SECRET": "Ghe0gON26qCXHyYKqwQZ6WWoFo02uvRiC4dwbNigyNW",
+            "activeSessions": {
+                "be3b2d5e-434c-487f-82e6-aeacf7ec259d": "2026-08-29T08:38:24.655Z"
+            },
+            "lastUsed": "2026-09-01T09:03:01.524Z",
+            "resetCount": 2
+        },
+        "key_1786126585643": {
+            "id": "key_1786126585643",
+            "provider": "livekit",
+            "status": "in_use",
+            "concurrency": 3,
+            "maxConcurrency": 5,
+            "monthlyUsageCount": 6,
+            "monthlyUsageLimit": 1000,
+            "monthlyUsageDuration": 0,
+            "monthlyDurationLimit": 5000,
+            "email": "mivaw35637@kingcq.com",
+            "LIVEKIT_URL": "wss://mivaw35637-kingcq-com-88yjutta.livekit.cloud",
+            "LIVEKIT_API_KEY": "APIdb5wSBe3ENkw",
+            "LIVEKIT_API_SECRET": "qaH7oFYuvuqyyyQQtgYnuKRzAfNxGGNBS0jXfLROINb",
+            "activeSessions": {
+                "f971aa3b-2d12-4a7e-9cc4-d880717556e7": "2026-08-29T07:59:51.389Z",
+                "5745ecdb-db04-4200-a4b2-0ee86497ef89": "2026-08-29T08:06:00.055Z",
+                "175905fd-7b99-4f3a-b212-f277bf5f903e": "2026-08-29T08:12:53.622Z"
+            },
+            "lastUsed": "2026-08-29T08:12:53.622Z",
+            "resetCount": 2
+        },
+        "key_1786126601341": {
+            "id": "key_1786126601341",
+            "provider": "livekit",
+            "status": "in_use",
+            "concurrency": 1,
+            "maxConcurrency": 5,
+            "monthlyUsageCount": 6,
+            "monthlyUsageLimit": 1000,
+            "monthlyUsageDuration": 6,
+            "monthlyDurationLimit": 5000,
+            "email": "canige5249@kingcq.com",
+            "LIVEKIT_URL": "wss://canige5249-kingcq-com-b0wwe4ox.livekit.cloud",
+            "LIVEKIT_API_KEY": "APISpDSpbXG4ikG",
+            "LIVEKIT_API_SECRET": "24hZ5OKbcQIqeQ1cYwCBq9WlPgONX71F1Cuf4wJCMBy",
+            "activeSessions": {
+                "731ecd19-2d4c-4bf8-aec6-856204536304": "2026-08-29T08:11:59.657Z"
+            },
+            "lastUsed": "2026-08-29T08:11:59.657Z",
+            "resetCount": 2
+        }
+    }
+}

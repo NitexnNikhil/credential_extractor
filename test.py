@@ -1,15 +1,3 @@
-# from deepgram import DeepgramClient  
-# try:  
-#     client = DeepgramClient(api_key="07be4ae2-0b3e-42bc-814b-1e167ae3c898")  
-#     response = client.listen.v1.media.transcribe_url(  
-#         url="https://dpgr.am/spacewalk.wav",  
-#         model="nova-3"  
-#     )  
-#     print("Key works")  
-# except Exception as e:  
-#     print(f"Key failed: {e}")
-
-
 from deepgram import DeepgramClient  
 from deepgram.core.api_error import ApiError  
   
@@ -45,7 +33,7 @@ if __name__ == "__main__":
     # Test with environment variable or replace with your key  
     # import os  
       
-    api_key = "b803b1d4a9da751529bfac677d62e8c531f63763"
+    api_key = "e204fade2b754ea9f3b79acee4974135dd289e2b"
     if not api_key:  
         print("Please set DEEPGRAM_API_KEY environment variable or modify the script")  
         exit(1)  

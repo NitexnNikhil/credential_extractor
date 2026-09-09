@@ -5,7 +5,7 @@ from livekit import api
 from livekit.api import ListRoomsRequest
 
 # --- CONFIGURATION ---
-INPUT_CSV = 'livekit_credentials.csv'  # Ensure your file is named this
+INPUT_CSV = '/Users/nikhilpathrabe/Documents/Projects/bootcoding/extrator_csv/extracted2_data copy.csv'  # Ensure your file is named this
 OUTPUT_CSV = 'unworkable_key.csv'      # The file to generate
 
 async def check_credential(url, api_key, api_secret):
