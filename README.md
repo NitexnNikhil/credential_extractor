@@ -46,6 +46,12 @@ It converts raw credential data into structured CSV and JSON formats, and then s
     ```
     - Converts CSV → JSON (format: `email, LIVEKIT_URL, LIVEKIT_API_KEY, LIVEKIT_API_SECRET`)
     - Sends securely via Upstash API endpoint.
+    - `LIVEKIT_URL`, `LIVEKIT_API_KEY`, and `LIVEKIT_API_SECRET` are always included when present in the CSV.
+    - `monthlyUsageLimit` and `monthlyDurationLimit` are optional and are only added when you pass `--limit`.
+    - The same value is applied to both fields.
+      ```bash
+      python livekit_sender.py --limit 10
+      ```
 
 3. Remove LiveKit credentials from Upstash:
     ```bash

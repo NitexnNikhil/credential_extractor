@@ -85,11 +85,18 @@ parser.add_argument(
     default="livekit-hotfix",
     help="Provider name to send in payload metadata (default: livekit-hotfix)",
 )
+parser.add_argument(
+    "--limit",
+    type=int,
+    default=None,
+    help="Optional monthly limit to apply to both usage and duration",
+)
 args = parser.parse_args()
 provider = resolve_provider(args.provider)
 api_url = DELETE_API_URL if args.remove else ADD_API_URL
 action_verb = "Removed" if args.remove else "Sent"
 json_file = JSON_FILES.get(provider, JSON_FILES["livekit-hotfix"])
+monthly_limit = args.limit
 
 # ---------------------------
 # Read CSV and build payloads
@@ -113,11 +120,24 @@ with open(CSV_FILE, mode="r", encoding="utf-8") as file:
             "provider": provider,
             "metadata": {
                 "email": row.get("email", "").strip(),
-                "LIVEKIT_URL": row.get("LIVE_KIT_URL", "").strip(),
-                "LIVEKIT_API_KEY": row.get("LIVEKIT_API_KEYS", "").strip(),
-                "LIVEKIT_API_SECRET": row.get("LIVEKIT_SECRET_KEYS", "").strip()
             }
         }
+        metadata = payload["metadata"]
+
+        livekit_url = row.get("LIVE_KIT_URL", "").strip()
+        livekit_api_key = row.get("LIVEKIT_API_KEYS", "").strip()
+        livekit_api_secret = row.get("LIVEKIT_SECRET_KEYS", "").strip()
+
+        if livekit_url:
+            metadata["LIVEKIT_URL"] = livekit_url
+        if livekit_api_key:
+            metadata["LIVEKIT_API_KEY"] = livekit_api_key
+        if livekit_api_secret:
+            metadata["LIVEKIT_API_SECRET"] = livekit_api_secret
+        if monthly_limit is not None:
+            metadata["monthlyUsageLimit"] = monthly_limit
+            metadata["monthlyDurationLimit"] = monthly_limit
+
         if args.remove:
             payload = {
                 "provider": provider,
