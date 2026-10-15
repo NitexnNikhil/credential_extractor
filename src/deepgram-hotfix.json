@@ -1,0 +1,54 @@
+{
+    "status": 201,
+    "response": {
+        "count": 3,
+        "key_1788258428896": {
+            "id": "key_1788258428896",
+            "provider": "deepgram-hotfix",
+            "status": "active",
+            "concurrency": 0,
+            "maxConcurrency": 15,
+            "monthlyUsageCount": 22,
+            "monthlyUsageLimit": 1000,
+            "monthlyUsageDuration": 37,
+            "monthlyDurationLimit": 5000,
+            "email": "trupti@gmail.com",
+            "PROJECT_ID": "c5b2d514-d098-4632-b849-18bc5a2cba71",
+            "DEEPGRAM_API_KEY": "6ab6ac9ca280b9c4defb2a1faf033dfeea3b245d",
+            "activeSessions": {},
+            "lastUsed": "2026-09-08T10:22:06.553Z"
+        },
+        "key_1788340908232": {
+            "id": "key_1788340908232",
+            "provider": "deepgram-hotfix",
+            "status": "active",
+            "concurrency": 0,
+            "maxConcurrency": 15,
+            "monthlyUsageCount": 21,
+            "monthlyUsageLimit": 1000,
+            "monthlyUsageDuration": 97,
+            "monthlyDurationLimit": 5000,
+            "email": "trupti2@gmail.com",
+            "PROJECT_ID": "c5b2d514-d098-4632-b849-18bc5a2cba71",
+            "DEEPGRAM_API_KEY": "d69ea6b34f281a4c66b4755f6b31b43d082eb4ca",
+            "activeSessions": {},
+            "lastUsed": "2026-09-08T10:09:33.119Z"
+        },
+        "key_1788340909718": {
+            "id": "key_1788340909718",
+            "provider": "deepgram-hotfix",
+            "status": "active",
+            "concurrency": 0,
+            "maxConcurrency": 15,
+            "monthlyUsageCount": 21,
+            "monthlyUsageLimit": 1000,
+            "monthlyUsageDuration": 87,
+            "monthlyDurationLimit": 5000,
+            "email": "trupti3@gmail.com",
+            "PROJECT_ID": "c5b2d514-d098-4632-b849-18bc5a2cba71",
+            "DEEPGRAM_API_KEY": "84e30cd24b26b743ea26d39901a7740526cfa137",
+            "activeSessions": {},
+            "lastUsed": "2026-09-08T10:18:10.696Z"
+        }
+    }
+}

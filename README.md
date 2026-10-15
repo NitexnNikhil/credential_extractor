@@ -35,14 +35,14 @@ It converts raw credential data into structured CSV and JSON formats, and then s
 
 1. Run the extractor to parse credentials from `LIVEKIT_KEYS.txt`:
     ```bash
-    python livekit_extractor.py
+    python3 livekit_extractor.py
     ```
     - Output: `LIVEKIT_DATA.csv` (rewritten if it already exists)
     - Note: The extracted data is structured and ready for sending.
 
 2. Send the extracted credentials to Upstash:
     ```bash
-    python livekit_sender.py
+    python3 livekit_sender.py
     ```
     - Converts CSV → JSON (format: `email, LIVEKIT_URL, LIVEKIT_API_KEY, LIVEKIT_API_SECRET`)
     - Sends securely via Upstash API endpoint.
@@ -50,7 +50,11 @@ It converts raw credential data into structured CSV and JSON formats, and then s
     - `monthlyUsageLimit` and `monthlyDurationLimit` are optional and are only added when you pass `--limit`.
     - The same value is applied to both fields.
       ```bash
-      python livekit_sender.py --limit 10
+      python3 livekit_sender.py --provider livekit --limit 60
+      ```
+    - `maxConcurrency` is optional and is only added when you pass `--concurrency`.
+      ```bash
+      python3 livekit_sender.py --provider livekit --concurrency 10
       ```
 
 3. Remove LiveKit credentials from Upstash:
@@ -71,7 +75,7 @@ It converts raw credential data into structured CSV and JSON formats, and then s
 
 1. Run the extractor to parse credentials from `DEEPGRAM_KEYS.txt`:
     ```bash
-    python deepgram_extractor.py
+    python3 deepgram_extractor.py
     ```
     - Output: `DEEPGRAM_DATA.csv` (rewritten if it already exists)
 
@@ -83,8 +87,8 @@ It converts raw credential data into structured CSV and JSON formats, and then s
     - Sends securely via Upstash API endpoint.
     - Optional: choose the payload provider with `--provider`
       ```bash
-      python deepgram_sender.py --provider deepgram-hotfix
-      python deepgram_sender.py --provider deepgram
+      python3 deepgram_sender.py --provider deepgram-hotfix
+      python3 deepgram_sender.py --provider deepgram
       ```
 
 3. Remove Deepgram credentials from Upstash:

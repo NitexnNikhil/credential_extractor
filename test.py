@@ -1,43 +1,82 @@
-from deepgram import DeepgramClient  
-from deepgram.core.api_error import ApiError  
-  
-def test_deepgram_api_key(api_key: str) -> bool:  
-    """Test if a Deepgram API key is valid by transcribing a sample audio URL."""  
-    try:  
-        # Initialize client with explicit API key  
-        client = DeepgramClient(api_key=api_key)  
-          
-        # Test with a known audio URL  
-        response = client.listen.v1.media.transcribe_url(  
-            url="https://dpgr.am/spacewalk.wav",  
-            model="nova-3"  
-        )  
-          
-        # Check if we got a valid response  
-        if response and response.results and response.results.channels:  
-            transcript = response.results.channels[0].alternatives[0].transcript  
-            print(f"✅ Key works! Transcript: {transcript}")  
-            return True  
-        else:  
-            print("❌ Key failed: Invalid response structure")  
-            return False  
-              
-    except ApiError as e:  
-        print(f"❌ Key failed: API Error {e.status_code}: {e.body}, api_key: {api_key}")  
-        return False  
-    except Exception as e:  
-        print(f"❌ Key failed: {e}")  
-        return False  
-  
-if __name__ == "__main__":  
-    # Test with environment variable or replace with your key  
-    # import os  
-      
-    api_key = "e204fade2b754ea9f3b79acee4974135dd289e2b"
-    if not api_key:  
-        print("Please set DEEPGRAM_API_KEY environment variable or modify the script")  
-        exit(1)  
-      
-    test_deepgram_api_key(api_key)
+import csv
+from pathlib import Path
+
+import requests
+
+INPUT_CSV = "deepgram_data.csv"
+OUTPUT_CSV = "deepgram_data_checked.csv"
+AUTH_URL = "https://api.deepgram.com/v1/auth/token"
 
 
+def test_deepgram_api_key(api_key: str) -> tuple[bool, str]:
+    """Return whether a Deepgram API key is valid and a short status message."""
+    if not api_key.strip():
+        return False, "EMPTY_KEY"
+
+    try:
+        response = requests.get(
+            AUTH_URL,
+            headers={"Authorization": f"Token {api_key.strip()}"},
+            timeout=10,
+        )
+
+        if response.status_code == 200:
+            return True, "VALID"
+
+        if response.status_code == 401:
+            return False, "INVALID_KEY"
+
+        return False, f"ERROR_{response.status_code}"
+
+    except requests.RequestException:
+        return False, "REQUEST_ERROR"
+
+
+def main() -> None:
+    input_path = Path(INPUT_CSV)
+    if not input_path.exists():
+        print(f"Error: {INPUT_CSV} not found.")
+        return
+
+    rows = []
+
+    with input_path.open("r", encoding="utf-8-sig", newline="") as infile:
+        reader = csv.DictReader(infile)
+        required_headers = {"email", "DEEPGRAM_API_KEY", "PROJECT_ID"}
+
+        if not required_headers.issubset(set(reader.fieldnames or [])):
+            print("Error: CSV headers mismatch.")
+            print(f"Found: {reader.fieldnames}")
+            print(f"Expected to contain: {required_headers}")
+            return
+
+        for row in reader:
+            email = row.get("email", "").strip()
+            api_key = row.get("DEEPGRAM_API_KEY", "").strip()
+            project_id = row.get("PROJECT_ID", "").strip()
+
+            is_valid, status = test_deepgram_api_key(api_key)
+            print(f"{email} -> {status}")
+
+            rows.append(
+                {
+                    "email": email,
+                    "DEEPGRAM_API_KEY": api_key,
+                    "PROJECT_ID": project_id,
+                    "STATUS": status,
+                }
+            )
+
+    with open(OUTPUT_CSV, "w", newline="", encoding="utf-8") as outfile:
+        writer = csv.DictWriter(
+            outfile,
+            fieldnames=["email", "DEEPGRAM_API_KEY", "PROJECT_ID", "STATUS"],
+        )
+        writer.writeheader()
+        writer.writerows(rows)
+
+    print(f"\nDone. Output saved to: {OUTPUT_CSV}")
+
+
+if __name__ == "__main__":
+    main()

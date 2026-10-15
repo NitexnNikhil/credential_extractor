@@ -91,12 +91,19 @@ parser.add_argument(
     default=None,
     help="Optional monthly limit to apply to both usage and duration",
 )
+parser.add_argument(
+    "--concurrency",
+    type=int,
+    default=None,
+    help="Optional maxConcurrency override to apply to each key",
+)
 args = parser.parse_args()
 provider = resolve_provider(args.provider)
 api_url = DELETE_API_URL if args.remove else ADD_API_URL
 action_verb = "Removed" if args.remove else "Sent"
 json_file = JSON_FILES.get(provider, JSON_FILES["livekit-hotfix"])
 monthly_limit = args.limit
+max_concurrency = args.concurrency
 
 # ---------------------------
 # Read CSV and build payloads
@@ -137,6 +144,8 @@ with open(CSV_FILE, mode="r", encoding="utf-8") as file:
         if monthly_limit is not None:
             metadata["monthlyUsageLimit"] = monthly_limit
             metadata["monthlyDurationLimit"] = monthly_limit
+        if max_concurrency is not None:
+            metadata["maxConcurrency"] = max_concurrency
 
         if args.remove:
             payload = {
