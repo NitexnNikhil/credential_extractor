@@ -1,8 +1,6 @@
-.env
-.venv
-# Ignore virtual environments
-venv/
-.env
+venv
+.idea/
+.vscode/
 __pycache__/
 *.pyc
 .DS_Store
